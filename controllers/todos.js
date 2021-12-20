@@ -8,12 +8,16 @@ const todos = [
 /**export l'utiliser dans un autre fichier */
 module.exports = {      
                              
-    getAlltodos : (req, res) => {
+    getAlltodos : (req, res) => {                       // requete
         
         res.status(200).json({ success : todos })
 
     },
 
+    deleteTodos : (req, res) => {
+        todos.splice(0, todos.length)
+        res.status(200).json({success : {todos: todos, message :'les todos on bien été supprimé'}})
+    },
 
     postAllTodos : (req, res) => {
         const { username, email, password, password_repeat } = req.body;
@@ -26,8 +30,8 @@ module.exports = {
           return res.status(200).json({ success: `${username} a bien été inscrit !` });
     },
 
-    deleteTodo : (req, res) => {
-            const { id } = req.params;                      // sinon param                                                             /** on extrait l'objet du body : id */
+    deleteTodo : (req, res) => {                        // requête paramétrés
+            const { id } = req.params;                                                                                   /** on extrait l'objet du body : id */
             todos.forEach((element, index) => {
                 if (id == element.id) {
                     let deleted = todos.splice(index, 1);                               
