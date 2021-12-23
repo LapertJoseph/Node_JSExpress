@@ -14,7 +14,7 @@ app.get("/api", ( _ , res) => {
     });
 });
 
-app.use('/api', todosRoute);                        /** permet d'épurer le code en ajouter un préfixe */
+app.use('/api', todosRoute);  /** permet d'épurer le code en ajouter un préfixe */
 
 
 app.listen(process.env.PORT, () => {
