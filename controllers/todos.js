@@ -71,7 +71,7 @@ module.exports = {
         try {
 
             connection = await pool.getConnection();
-            const result = connection.query('SELECT * FROM todo;');
+            const result = await connection.query('SELECT * FROM todo;');
             console.log(result);
             return res.status(200).json( { success: result } );
 
@@ -85,5 +85,5 @@ module.exports = {
 
         }
 
-    },
+    }
 }

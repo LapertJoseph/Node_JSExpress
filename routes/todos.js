@@ -2,7 +2,7 @@
 const router = require('express-promise-router')(); 
 
 // définir en params les fonctions qui sont dans le controllers
-const { getAlltodos, postAllTodos, deleteTodo, insertUser, updateTodo, deleteTodos } = require('../controllers/todos')   
+const { getAlltodos, postAllTodos, deleteTodo, insertUser, updateTodo, deleteTodos, test } = require('../controllers/todos')   
 
 
 router
@@ -16,6 +16,10 @@ router
     .delete(deleteTodo)
     .post(insertUser)
     .put(updateTodo)
+
+router
+    .route('/test')
+    .get(test)
 
 /**export pour l'utiliser dans un autre fichier */
 module.exports = router;
