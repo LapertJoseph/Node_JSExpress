@@ -5,7 +5,7 @@ const todos = [
 ];
 
 
-/**export l'utiliser dans un autre fichier */
+/**export permet de l'utiliser dans un autre fichier */
 module.exports = {      
                              
     getAlltodos : (req, res) => {                       // requete

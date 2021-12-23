@@ -1,7 +1,7 @@
 const express = require("express");     //importation d'express
 const app = express();                  // on utilise app
 const port = 3000;                      // définis le port d'écoute
-
+const todosRoute = require('./routes/todos'); 
 /**------------------------------------------------------Serveur express--------------------------------------------- **/
 app.use(express.json());              // middleware qui parse le body en JSON
 
@@ -12,7 +12,7 @@ app.get("/api", ( _ , res) => {
     });
 });
 
-const todosRoute = require('./routes/todos');
+
 app.use('/api', todosRoute);                        /** permet d'épurer le code en ajouter un préfixe */
 
 
