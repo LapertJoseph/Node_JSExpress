@@ -1,3 +1,5 @@
+require('dotenv').config({ path: `./config/${process.env.NODE_ENV}.env` })
+
 const express = require("express");     //importation d'express
 const app = express();                  // on utilise app
 const port = 3000;                      // définis le port d'écoute
@@ -12,10 +14,9 @@ app.get("/api", ( _ , res) => {
     });
 });
 
-
 app.use('/api', todosRoute);                        /** permet d'épurer le code en ajouter un préfixe */
 
 
-app.listen(port, () => {
-    console.log(`server listening on port ${port}`);
+app.listen(process.env.PORT, () => {
+    console.log(`server listening on port ${process.env.PORT}`);
 });
