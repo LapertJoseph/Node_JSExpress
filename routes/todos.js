@@ -2,7 +2,7 @@
 const router = require('express-promise-router')(); 
 
 // définir en params les fonctions qui sont dans le controllers
-const { getAlltodos, postAllTodos, deleteTodo, insertUser, updateTodo, deleteTodos, test } = require('../controllers/todos')   
+const { getAlltodos, postAllTodos, deleteTodo, insertUser, updateTodo, deleteTodos, test, allTodos, insertTodo, updatedTodo } = require('../controllers/todos')   
 
 
 router
@@ -19,7 +19,19 @@ router
 
 router
     .route('/test')
-    .get(test)
+    // .get(test)
+    .get(allTodos)
+    .post(insertTodo)
+    // .put(updatedTodo)
+router
+    .route('/test/:id')
+    .put(updatedTodo)
 
-/**export pour l'utiliser dans un autre fichier */
-module.exports = router;
+module.exports = router; /**export pour l'utiliser dans un autre fichier */
+
+
+/* POST: Création d'une ressource C
+/* GET: select une ressource      R
+/* PUT: Update la ressource       U
+/*  DELETE: Effacer               D
+/*/

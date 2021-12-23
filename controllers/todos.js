@@ -1,8 +1,8 @@
-const todos = [
-    { id: 1, texte: "premiere tache" },
-    { id: 2, texte: "deuxieme tache" },
-    { id: 3, texte: "troisieme tache" },
-];
+// const todos = [
+//     { id: 1, texte: "premiere tache" },
+//     { id: 2, texte: "deuxieme tache" },
+//     { id: 3, texte: "troisieme tache" },
+// ];
 const pool = require('../config/database');
 
 /**export permet de l'utiliser dans un autre fichier */
@@ -85,5 +85,72 @@ module.exports = {
 
         }
 
-    }
+    },
+
+    allTodos: async ( _ , res) => {
+
+        let connection; 
+
+        try {
+            connection = await pool.getConnection();
+            const result = await connection.query(`CALL getAllCommands();`);
+            console.log(result[0]);
+            return res.status(200).json( { success: result[0] } );
+
+        } catch (error) {
+
+            return res.status(400).json( { error: error.message } );
+
+        } finally {
+
+            if (connection) connection.end();
+
+        }
+
+    },
+
+    insertTodo: async ( req , res) => {
+
+        let connection; 
+
+        try {
+            const  { texte } = req.body
+            connection = await pool.getConnection();
+            const result = await connection.query('CALL insertTodo(?);',[texte]);
+            console.log(result);
+            return res.status(200).json( { success: result } );
+
+        } catch (error) {
+
+            return res.status(400).json( { error: error.message } );
+
+        } finally {
+
+            if (connection) connection.end();
+
+        }
+
+    },
+
+    updatedTodo: async ( req , res) => {
+        let connection; 
+        try {
+            const { id } = req.params;
+            
+            connection = await pool.getConnection();
+            const result = await connection.query('CALL updatedTodo(?,?);',[id, texte]);
+            console.log(result);
+            return res.status(200).json( { success: result } );
+
+        } catch (error) {
+
+            return res.status(400).json( { error: error.message } );
+
+        } finally {
+
+            if (connection) connection.end();
+
+        }
+
+    },
 }

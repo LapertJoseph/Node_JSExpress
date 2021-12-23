@@ -8,7 +8,8 @@
     "dev": "cross-env NODE_ENV=dev nodemon app2.js",
     "prod": "cross-env NODE_ENV=prod node app2.js",
     "todo": "nodemon exercice.js",
-    "integrateDB": "cross-env mariadb -u root -p < ./database/schemas.sql"
+    "integrateDB": "cross-env mariadb -u root -p < ./database/schemas.sql",
+    "integrateProc": "cross-env mariadb -u root -p < ./database/procedure.sql"
   },
   "author": "Maszala",
   "license": "ISC",
