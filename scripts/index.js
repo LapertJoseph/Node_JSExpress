@@ -1,4 +1,4 @@
-const myForeach = (array, callback) => {
+const myForeach = (array, callback) => {            // exemple de factorisation de forEach
 
     for (let index = 0; index < array.length; index++) {
         const element = array[index];
@@ -13,6 +13,7 @@ const arr = [54, 56, 87];
 //     console.log(index);
 //     console.log(tableau);
 // })
+
 myForeach(arr, (element, index, tableau) => {
     console.log(element);
     console.log(index);
