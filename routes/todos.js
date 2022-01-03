@@ -34,4 +34,4 @@ module.exports = router; /**export pour l'utiliser dans un autre fichier */
 /* GET: select une ressource        R
 /* PUT: Update la ressource         U
 /* DELETE: Effacer                  D
-/*/
+/**/
