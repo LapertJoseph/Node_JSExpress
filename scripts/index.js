@@ -18,3 +18,13 @@ myForeach(arr, (element, index, tableau) => {
     console.log(index);
     console.log(tableau);
 })
+
+const mult2 = (array) => {
+    myForeach(array, (element, index, array) => {
+        element = element * 2
+        array[index] = element;
+    });
+}
+
+mult2(arr)
+console.log(arr);
