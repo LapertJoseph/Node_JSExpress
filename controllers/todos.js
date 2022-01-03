@@ -87,13 +87,13 @@ module.exports = {
 
     },
 
-    allTodos: async ( _ , res) => {
+    SelectAllTodos: async ( _ , res) => {
 
         let connection; 
 
         try {
             connection = await pool.getConnection();
-            const result = await connection.query(`CALL getAllCommands();`);
+            const result = await connection.query(`CALL selectAllTodos;`);
             console.log(result[0]);
             return res.status(200).json( { success: result[0] } );
 

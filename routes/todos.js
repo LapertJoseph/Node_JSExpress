@@ -2,7 +2,7 @@
 const router = require('express-promise-router')(); 
 
 // définir en params les fonctions qui sont dans le controllers
-const { getAlltodos, postAllTodos, insertUser, updateTodo, deleteTodos, test, allTodos, insertTodo, updatedTodo, deleteTodo } = require('../controllers/todos')   
+const { getAlltodos, postAllTodos, insertUser, updateTodo, deleteTodos, SelectAllTodos, insertTodo, updatedTodo, deleteTodo } = require('../controllers/todos')   
 
 
 router
@@ -21,7 +21,7 @@ router                                          /* Route avec les procédures st
     .route('/test')
     // .get(test)
     .post(insertTodo)
-    .get(allTodos)
+    .get(SelectAllTodos)
     // .put(updatedTodo)
 router                                          /* Route avec des params  */
     .route('/test/:id')

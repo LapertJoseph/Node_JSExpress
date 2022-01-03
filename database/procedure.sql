@@ -1,6 +1,13 @@
 use todo_dev;
 
 DELIMITER //
+
+CREATE OR REPLACE PROCEDURE selectAllTodos ()
+
+BEGIN
+    SELECT id, texte FROM todo;
+END //
+
 CREATE OR REPLACE PROCEDURE insertTodo (IN p_texte VARCHAR(255))
 
 BEGIN
