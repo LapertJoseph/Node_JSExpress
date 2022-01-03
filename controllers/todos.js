@@ -30,15 +30,15 @@ module.exports = {
           return res.status(200).json({ success: `${username} a bien été inscrit !` });
     },
 
-    deleteTodo : (req, res) => {                        // requête paramétrés
-            const { id } = req.params;                                                                                   /** on extrait l'objet du body : id */
-            todos.forEach((element, index) => {
-                if (id == element.id) {
-                    let deleted = todos.splice(index, 1);                               
-                }
-            })
-            return res.status(200).json({ success: "La todo a bien été delete", todos: todos})                  /** envoi la réponse sous un json */
-    },
+    // deleteTodo : (req, res) => {                        // requête paramétrés
+    //         const { id } = req.params;                                                                                   /** on extrait l'objet du body : id */
+    //         todos.forEach((element, index) => {
+    //             if (id == element.id) {
+    //                 let deleted = todos.splice(index, 1);                               
+    //             }
+    //         })
+    //         return res.status(200).json({ success: "La todo a bien été delete", todos: todos})                  /** envoi la réponse sous un json */
+    // },
 
     insertUser : (req, res) => {
         const { username, email, password, password_repeat } = req.body; // quand plein de param mettre dans body
@@ -64,7 +64,7 @@ module.exports = {
         return res.status(200).json({ success: "La todo a bien été update", todos: todos})
     },
 
-    test: async ( _ , res) => {
+    test: async (req, res) => {
 
         let connection; 
 
@@ -153,4 +153,24 @@ module.exports = {
         }
 
     },
+    deleteTodo: async (req, res) => {
+        let connection; 
+        try {
+            const { id } = req.params;
+            connection = await pool.getConnection();
+            const result = await connection.query('CALL deleteTodo(?);',[id]);
+            console.log(result);
+            return res.status(200).json( { success: result } );
+
+        }
+        catch (error) {
+
+            return res.status(400).json( { error: error.message } );
+
+        } finally {
+
+            if (connection) connection.end();
+
+        }
+    }
 }

@@ -15,3 +15,11 @@ BEGIN
     SET texte = p_texte
     WHERE id = p_id;
 END //
+
+CREATE OR REPLACE PROCEDURE deleteTodo (IN p_id INT)
+
+BEGIN 
+    DELETE todo
+    FROM todo
+    WHERE id = p_id;
+END //
