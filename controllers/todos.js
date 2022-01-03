@@ -1,4 +1,5 @@
 const pool = require('../config/database');
+const { call } = require('../utils/') // pas besoin de mettre /index quand c'est un index.
 
 /**export permet de l'utiliser dans un autre fichier */
 module.exports = {      
@@ -84,23 +85,23 @@ module.exports = {
 
     SelectAllTodos: async ( _ , res) => {
 
-        let connection; 
+        await call (res, async (connection) => {
+            const result = await connection.query("CALL selectAllTodos()");
+            return res.status(200).json({ success : result })
+        })
 
-        try {
-            connection = await pool.getConnection();
-            const result = await connection.query(`CALL selectAllTodos;`);
-            console.log(result[0]);
-            return res.status(200).json( { success: result[0] } );
+        // let connection; 
 
-        } catch (error) {
-
-            return res.status(400).json( { error: error.message } );
-
-        } finally {
-
-            if (connection) connection.end();
-
-        }
+        // try {
+        //     connection = await pool.getConnection();
+        //     const result = await connection.query(`CALL selectAllTodos;`);
+        //     console.log(result[0]);
+        //     return res.status(200).json( { success: result[0] } );
+        // } catch (error) {
+        //     return res.status(400).json( { error: error.message } );
+        // } finally {
+        //     if (connection) connection.end();
+        // }
 
     },
 
