@@ -30,8 +30,8 @@ router
 module.exports = router; /**export pour l'utiliser dans un autre fichier */
 
 
-/* POST: Création d'une ressource C
-/* GET: select une ressource      R
-/* PUT: Update la ressource       U
-/*  DELETE: Effacer               D
+/* POST: Création d'une ressource   C
+/* GET: select une ressource        R
+/* PUT: Update la ressource         U
+/* DELETE: Effacer                  D
 /*/
