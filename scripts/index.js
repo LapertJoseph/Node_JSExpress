@@ -7,7 +7,6 @@ const myForeach = (array, callback) => {            // exemple de factorisation 
 }
 
 const arr = [54, 56, 87];
-
 // arr.forEach((element, index, tableau) => {
 //     console.log(element);
 //     console.log(index);
