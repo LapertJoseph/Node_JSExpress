@@ -1,8 +1,3 @@
-// const todos = [
-//     { id: 1, texte: "premiere tache" },
-//     { id: 2, texte: "deuxieme tache" },
-//     { id: 3, texte: "troisieme tache" },
-// ];
 const pool = require('../config/database');
 
 /**export permet de l'utiliser dans un autre fichier */
