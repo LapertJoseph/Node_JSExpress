@@ -1,22 +1,18 @@
 use todo_dev;
 
 DELIMITER //
-
 CREATE OR REPLACE PROCEDURE selectAllTodos ()
-
 BEGIN
     SELECT id, texte FROM todo;
 END //
 
 CREATE OR REPLACE PROCEDURE insertTodo (IN p_texte VARCHAR(255))
-
 BEGIN
     INSERT INTO todo (texte)
     VALUES (p_texte);
 END //
 
 CREATE OR REPLACE PROCEDURE updatedTodo (IN p_id INT, IN p_texte VARCHAR(255))
-
 BEGIN
     UPDATE todo 
     SET texte = p_texte
@@ -24,7 +20,6 @@ BEGIN
 END //
 
 CREATE OR REPLACE PROCEDURE deleteTodo (IN p_id INT)
-
 BEGIN 
     DELETE todo
     FROM todo
