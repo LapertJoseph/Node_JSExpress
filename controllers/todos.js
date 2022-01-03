@@ -136,7 +136,8 @@ module.exports = {
         let connection; 
         try {
             const { id } = req.params;
-            
+            const { texte } = req.body;
+                        
             connection = await pool.getConnection();
             const result = await connection.query('CALL updatedTodo(?,?);',[id, texte]);
             console.log(result);
